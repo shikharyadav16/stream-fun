@@ -1,5 +1,5 @@
-const APP_ID = "488f08f3edf2442183f27a43f3340dbc"
-const TOKEN = "007eJxTYNj3Ja3TcOvfxqzajJoQJ2Hp4nCJ/auE+9/qndpianQv6p0Cg4mFRZqBRZpxakqakYmJkaGFcZqReaKJcZqxsYlBSlKykviftIZARoYWTzYmRgYIBPFZGHITM/MYGAAtFR47"
+const APP_ID = "dd7e69ce2a00418187350791a972ad46"
+const TOKEN = "007eJxTYLi+y/ERn9gr05sXDx55lV4mZ3graEr4jPD6OIvGeR7XiiMVGFJSzFPNLJNTjRINDEwMLQwtzI1NDcwtDRMtzY0SU0zMXhb+S2sIZGTYotrMzMgAgSA+C0NuYmYeAwMAm5sgRQ=="
 const CHANNEL = "main"
 
 const client = AgoraRTC.createClient({mode:'rtc', codec:'vp8'})
@@ -10,9 +10,9 @@ let remoteUsers = {}
 let joinAndDisplayLocalStream = async () => {
 
     client.on('user-published', handleUserJoined)
-
+    
     client.on('user-left', handleUserLeft)
-
+    
     let UID = await client.join(APP_ID, CHANNEL, TOKEN, null)
 
     localTracks = await AgoraRTC.createMicrophoneAndCameraTracks() 
@@ -23,7 +23,7 @@ let joinAndDisplayLocalStream = async () => {
     document.getElementById('video-streams').insertAdjacentHTML('beforeend', player)
 
     localTracks[1].play(`user-${UID}`)
-
+    
     await client.publish([localTracks[0], localTracks[1]])
 }
 
